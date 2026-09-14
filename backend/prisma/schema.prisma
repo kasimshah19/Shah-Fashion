@@ -1,0 +1,158 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        String    @id @default(uuid())
+  name      String
+  email     String    @unique
+  phone     String
+  role      Role      @default(CUSTOMER)
+  addresses Address[]
+  orders    Order[]
+  reviews   Review[]
+  wishlist  Wishlist[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+enum Role {
+  CUSTOMER
+  ADMIN
+}
+
+model Address {
+  id           String  @id @default(uuid())
+  userId       String
+  user         User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name         String
+  phone        String
+  pincode      String
+  addressLine1 String
+  addressLine2 String?
+  city         String
+  state        String
+  isDefault    Boolean @default(false)
+  orders       Order[]
+}
+
+model Product {
+  id              String       @id @default(uuid())
+  sku             String       @unique
+  name            String
+  description     String
+  categoryId      String?
+  category        Category?    @relation(fields: [categoryId], references: [id])
+  fabric          String
+  work            String
+  region          String
+  blouseStatus    String
+  price           Float
+  discountedPrice Float
+  stock           Int          @default(0)
+  images          String[]
+  isNew           Boolean      @default(false)
+  isBestseller    Boolean      @default(false)
+  isSale          Boolean      @default(false)
+  reviews         Review[]
+  orderItems      OrderItem[]
+  wishlistedBy    Wishlist[]
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+}
+
+model Category {
+  id       String    @id @default(uuid())
+  name     String
+  slug     String    @unique
+  image    String?
+  products Product[]
+}
+
+model Order {
+  id            String      @id @default(uuid())
+  userId        String
+  user          User        @relation(fields: [userId], references: [id])
+  addressId     String
+  address       Address     @relation(fields: [addressId], references: [id])
+  status        OrderStatus @default(Placed)
+  paymentMethod String
+  subtotal      Float
+  discount      Float       @default(0)
+  shipping      Float       @default(0)
+  total         Float
+  items         OrderItem[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+enum OrderStatus {
+  Placed
+  Packed
+  Shipped
+  Out_for_Delivery
+  Delivered
+}
+
+model OrderItem {
+  id        String  @id @default(uuid())
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  name      String
+  quantity  Int
+  price     Float
+  image     String
+}
+
+model Review {
+  id        String       @id @default(uuid())
+  productId String
+  product   Product      @relation(fields: [productId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  rating    Int
+  comment   String
+  photos    String[]
+  status    ReviewStatus @default(PENDING)
+  createdAt DateTime     @default(now())
+}
+
+enum ReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model Coupon {
+  id            String   @id @default(uuid())
+  code          String   @unique
+  discountType  String   // e.g., "PERCENTAGE" or "FIXED"
+  discountValue Float
+  minOrderValue Float    @default(0)
+  expiryDate    DateTime
+  isActive      Boolean  @default(true)
+}
+
+model Wishlist {
+  id        String  @id @default(uuid())
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
+}
+
+model HomepageContent {
+  id    String @id @default(uuid())
+  type  String // e.g., "Hero", "Offer", "Collection"
+  data  Json
+}

@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  body {
+    @apply bg-ivory text-gray-900 font-sans antialiased;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-brand text-white font-medium px-6 py-3 rounded-lg
+           hover:bg-brand-dark active:scale-[0.98] transition-all duration-200
+           min-h-[44px] flex items-center justify-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border-2 border-brand text-brand font-medium px-6 py-3 rounded-lg
+           hover:bg-brand hover:text-white active:scale-[0.98] transition-all duration-200
+           min-h-[44px] flex items-center justify-center gap-2;
+  }
+
+  .btn-gold {
+    @apply bg-gold text-white font-medium px-6 py-3 rounded-lg
+           hover:bg-gold-dark active:scale-[0.98] transition-all duration-200
+           min-h-[44px] flex items-center justify-center gap-2;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-200 rounded-lg bg-white
+           focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand
+           transition-all min-h-[44px];
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden;
+  }
+
+  .skeleton {
+    @apply animate-pulse bg-gray-200 rounded;
+  }
+
+  .badge {
+    @apply text-xs font-semibold px-2 py-0.5 rounded-full;
+  }
+
+  .page-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  /* Prevent content from hiding behind fixed bottom nav */
+  .mobile-nav-clearance {
+    @apply pb-20 lg:pb-0;
+  }
+}
