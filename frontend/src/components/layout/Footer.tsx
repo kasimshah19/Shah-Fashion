@@ -23,7 +23,7 @@ export function Footer() {
               <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold transition-colors">
                 <Facebook size={18} />
               </a>
-              <a href="https://wa.me/919876543210" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold transition-colors">
+              <a href="https://wa.me/919359794521" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gold transition-colors">
                 <MessageCircle size={18} />
               </a>
             </div>
