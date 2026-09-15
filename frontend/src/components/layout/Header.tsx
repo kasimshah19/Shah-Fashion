@@ -113,7 +113,7 @@ export function Header() {
                 key={link.href}
                 to={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block py-3 text-ivory font-medium text-gray-700 hover:text-brand min-h-[44px]"
+                className="block py-3 font-medium text-gray-700 hover:text-brand min-h-[44px]"
               >
                 {link.label}
               </Link>
@@ -121,7 +121,7 @@ export function Header() {
             <Link
               to="/shop/new-arrivals"
               onClick={() => setMobileMenuOpen(false)}
-              className="block py-3 text-ivory font-medium text-gold-dark min-h-[44px]"
+              className="block py-3 font-medium text-brand min-h-[44px]"
             >
               New Arrivals
             </Link>
