@@ -194,7 +194,7 @@ const defaultHeroSlides = [
     cta: 'Shop Wedding Sarees',
     href: '/shop/wedding',
     bg: 'from-maroon/90 to-maroon-dark/90',
-    image: '/about-hero/handloom_weaving_closeup_1789360135675.jpg',
+    image: '/hero/slide1.jpg',
   },
   {
     title: 'Festive Sale — Up to 30% Off',
@@ -202,7 +202,7 @@ const defaultHeroSlides = [
     cta: 'Shop Sale',
     href: '/shop/sale',
     bg: 'from-bottle/90 to-bottle-light/90',
-    image: '/about-story/story_1.jpg',
+    image: '/hero/slide2.jpg',
   },
   {
     title: 'Heritage Banarasi',
@@ -210,7 +210,7 @@ const defaultHeroSlides = [
     cta: 'Explore Banarasi',
     href: '/shop/banarasi',
     bg: 'from-amber-800/90 to-amber-900/90',
-    image: '/about-story/story_2.jpg',
+    image: '/hero/slide3.jpg',
   },
   {
     title: 'The Royal Drape',
