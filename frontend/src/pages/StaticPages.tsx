@@ -20,27 +20,27 @@ export function ContactPage() {
     {
       title: 'At Your Service',
       subtitle: 'Dedicated assistance for our esteemed clientele',
-      image: '/about-story/story_1_v2.jpg',
+      image: '/contact/contact-1.jpg',
     },
     {
       title: 'Luxury Concierge',
       subtitle: 'Personalized attention to every detail',
-      image: '/about-story/story_2_v2.jpg',
+      image: '/contact/contact-2.jpg',
     },
     {
       title: 'Crafted with Care',
       subtitle: 'Every piece handled with the utmost precision',
-      image: '/about-story/story_3_v2.jpg',
+      image: '/contact/contact-3.jpg',
     },
     {
       title: 'Bespoke Experience',
       subtitle: 'Step into a world of exclusive consultations',
-      image: '/about-hero/saree_fabric_texture_1_1789360123741.jpg',
+      image: '/contact/contact-4.jpg',
     },
     {
       title: 'Timeless Elegance',
       subtitle: 'Master artisans perfecting your vision',
-      image: '/about-story/story_1_v3.jpg',
+      image: '/contact/contact-5.jpg',
     },
   ];
 
@@ -287,7 +287,7 @@ export function ContactPage() {
         <div ref={storeRef} className={`max-w-6xl mx-auto px-4 mt-32 transition-all duration-1000 delay-100 ${storeVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <div className="bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 flex flex-col lg:flex-row">
             <div className="lg:w-1/2 relative h-64 lg:h-auto overflow-hidden group">
-              <img src="/about-story/story_1.jpg" alt="Boutique" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[20s]" />
+              <img src="/contact/contact-1.jpg" alt="Boutique" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[20s]" />
               <div className="absolute inset-0 bg-maroon/20 mix-blend-overlay"></div>
             </div>
             <div className="lg:w-1/2 p-10 lg:p-16 flex flex-col justify-center">
@@ -392,32 +392,27 @@ export function ShippingReturnsPage() {
     {
       title: 'Premium Packaging',
       subtitle: 'Every piece wrapped with love and care',
-      image: '/about-story/story_2_v3.jpg',
+      image: '/images/shipping-returns/guide-1.jpg',
     },
     {
       title: 'Delivered with Joy',
       subtitle: 'From our boutique straight to your doorstep',
-      image: '/about-story/story_3_v3.jpg',
+      image: '/images/shipping-returns/guide-2.jpg',
     },
     {
       title: 'Crafted with Precision',
       subtitle: 'Each order handled with artisan-level care',
-      image: '/about-hero/silk_saree_fabric_texture_2_1789360165685.jpg',
-    },
-    {
-      title: 'Quality Assured',
-      subtitle: 'Inspected and certified before dispatch',
-      image: '/about-story/story_1.jpg',
+      image: '/images/shipping-returns/guide-3.jpg',
     },
     {
       title: 'Safe & Secure',
       subtitle: 'Insured shipping across India and worldwide',
-      image: '/about-story/story_2.jpg',
+      image: '/images/shipping-returns/guide-4.jpg',
     },
     {
       title: 'Hassle-Free Returns',
       subtitle: 'Your satisfaction is our foremost priority',
-      image: '/about-story/story_3.jpg',
+      image: '/images/shipping-returns/guide-5.jpg',
     },
   ];
 
@@ -671,32 +666,32 @@ export function FAQPage() {
     {
       title: 'Our Promise',
       subtitle: 'Answers to your most discerning queries',
-      image: '/about-hero/handloom_weaving_closeup_1789360135675.jpg',
+      image: '/faq/support-1.jpg',
     },
     {
       title: 'Heritage & Craft',
       subtitle: 'Understanding the legacy of Kanchipuram silk',
-      image: '/about-story/story_1_v2.jpg',
+      image: '/faq/support-2.jpg',
     },
     {
       title: 'Bespoke Services',
       subtitle: 'Tailored specifically for your needs',
-      image: '/about-story/story_2_v2.jpg',
+      image: '/faq/support-3.jpg',
     },
     {
       title: 'Personal Styling',
       subtitle: 'Expert assistance for your special day',
-      image: '/about-story/story_3_v2.jpg',
+      image: '/faq/support-4.jpg',
     },
     {
       title: 'Authenticity Guaranteed',
       subtitle: 'Trust and quality in every weave',
-      image: '/about-hero/saree_pallu_detail_1789360151408.jpg',
+      image: '/faq/support-5.jpg',
     },
     {
       title: 'Curated Collections',
       subtitle: 'Explore our masterfully woven masterpieces',
-      image: '/about-story/story_1_v3.jpg',
+      image: '/faq/support-6.jpg',
     }
   ];
 
@@ -710,27 +705,33 @@ export function FAQPage() {
   const faqs = [
     {
       question: "Are your sarees authentic?",
-      answer: "Yes. All silk sarees come with authenticity certification where applicable. We source directly from weaver cooperatives and certified suppliers to ensure you receive only genuine, highest-quality weaves."
+      answer: "Yes. All silk sarees come with authenticity certification where applicable. We source directly from weaver cooperatives and certified suppliers to ensure you receive only genuine, highest-quality weaves.",
+      image: "/faq/support-1.jpg"
     },
     {
       question: "How long does shipping take?",
-      answer: "Orders within India are delivered within 3-5 business days. International shipping takes 7-14 business days depending on customs clearance. All our packages are fully insured during transit."
+      answer: "Orders within India are delivered within 3-5 business days. International shipping takes 7-14 business days depending on customs clearance. All our packages are fully insured during transit.",
+      image: "/faq/support-2.jpg"
     },
     {
       question: "Do you offer international shipping?",
-      answer: "Yes, we ship worldwide. Shipping costs and delivery times vary by destination. We partner with premium logistics providers to ensure your luxury items reach you safely across the globe."
+      answer: "Yes, we ship worldwide. Shipping costs and delivery times vary by destination. We partner with premium logistics providers to ensure your luxury items reach you safely across the globe.",
+      image: "/faq/support-3.jpg"
     },
     {
       question: "What is your return policy?",
-      answer: "We accept returns within 7 days of delivery. The item must be unworn, unwashed, and have original tags attached. Custom-stitched items and bespoke orders cannot be returned."
+      answer: "We accept returns within 7 days of delivery. The item must be unworn, unwashed, and have original tags attached. Custom-stitched items and bespoke orders cannot be returned.",
+      image: "/faq/support-4.jpg"
     },
     {
       question: "How do I care for my silk sarees?",
-      answer: "We recommend dry cleaning only for all pure silk sarees. Store them wrapped in a clean cotton cloth in a cool, dry place. Avoid using perfumes directly on the fabric to prevent staining."
+      answer: "We recommend dry cleaning only for all pure silk sarees. Store them wrapped in a clean cotton cloth in a cool, dry place. Avoid using perfumes directly on the fabric to prevent staining.",
+      image: "/faq/support-5.jpg"
     },
     {
       question: "Can I cancel my order?",
-      answer: "You can cancel your order within 24 hours of placing it. After 24 hours, the order is processed for dispatch and cannot be canceled. Please contact our concierge team for immediate assistance."
+      answer: "You can cancel your order within 24 hours of placing it. After 24 hours, the order is processed for dispatch and cannot be canceled. Please contact our concierge team for immediate assistance.",
+      image: "/faq/support-6.jpg"
     }
   ];
 
@@ -821,10 +822,13 @@ export function FAQPage() {
                   </div>
                   
                   <div 
-                    className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}
+                    className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'}`}
                   >
-                    <div className="p-6 lg:p-8 pt-0 border-t border-gold/10 mx-6 lg:mx-8">
-                      <p className="text-gray-600 leading-relaxed font-light text-lg pt-6">
+                    <div className="p-6 lg:p-8 pt-6 border-t border-gold/10 mx-6 lg:mx-8 flex flex-col md:flex-row gap-8 items-start mt-2">
+                      <div className="w-full md:w-1/3 shrink-0">
+                        <img src={faq.image} alt="FAQ Support" className="w-full h-auto rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] object-cover" />
+                      </div>
+                      <p className="text-gray-600 leading-relaxed font-light text-lg flex-1">
                         {faq.answer}
                       </p>
                     </div>
@@ -855,32 +859,27 @@ export function SizeGuidePage() {
     {
       title: 'Flawless Fit',
       subtitle: 'Discover the art of perfect measurements',
-      image: '/about-story/story_2_v3.jpg',
+      image: '/images/size-guide/guide-1.jpg',
     },
     {
       title: 'Bespoke Elegance',
       subtitle: 'Tailored to grace your unique silhouette',
-      image: '/about-story/story_3_v3.jpg',
+      image: '/images/size-guide/guide-2.jpg',
     },
     {
       title: 'The Perfect Drape',
       subtitle: 'Every fold masterfully measured',
-      image: '/about-hero/saree_fabric_texture_1_1789360123741.jpg',
+      image: '/images/size-guide/guide-3.jpg',
     },
     {
       title: 'Master Craftsmanship',
       subtitle: 'Precision cutting for an exquisite look',
-      image: '/about-story/story_1.jpg',
+      image: '/images/size-guide/guide-4.jpg',
     },
     {
       title: 'Luxurious Silhouette',
       subtitle: 'Golden silk draped to perfection',
-      image: '/about-hero/silk_saree_fabric_texture_2_1789360165685.jpg',
-    },
-    {
-      title: 'Intricate Details',
-      subtitle: 'Embroidery that tells a beautiful story',
-      image: '/about-story/story_2.jpg',
+      image: '/images/size-guide/guide-5.jpg',
     }
   ];
 

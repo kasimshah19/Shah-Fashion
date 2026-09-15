@@ -4,28 +4,51 @@ export default {
   theme: {
     extend: {
       colors: {
+        primary: {
+          DEFAULT: '#800020',
+          hover: '#650019',
+        },
+        accent: '#C9A227',
+        background: '#FFFAF0',
+        surface: {
+          DEFAULT: '#FFFFFF',
+          muted: '#F6EEE3',
+        },
+        rose: '#E8C7C8',
         brand: {
-          DEFAULT: '#C66385',
-          dark: '#A84E6D',
-          light: '#D97FA0',
+          DEFAULT: '#800020',
+          dark: '#650019',
+          light: '#E8C7C8',
         },
         maroon: {
-          DEFAULT: '#7A0C2E',
-          dark: '#5A0822',
-          light: '#9E1A42',
+          DEFAULT: '#800020',
+          dark: '#650019',
+          light: '#800020',
         },
         gold: {
-          DEFAULT: '#C9A24B',
-          light: '#E0C078',
-          dark: '#A8853A',
+          DEFAULT: '#C9A227',
+          light: '#C9A227',
+          dark: '#C9A227',
         },
         ivory: {
-          DEFAULT: '#FDF8F1',
-          dark: '#F5EDE0',
+          DEFAULT: '#FFFAF0',
+          dark: '#F6EEE3',
         },
         bottle: {
-          DEFAULT: '#1B4332',
-          light: '#2D6A4F',
+          DEFAULT: '#292525', // Maps to user's text-primary for dark backgrounds like footer
+          light: '#4a4441',
+        },
+        gray: {
+          50: '#FFFAF0',
+          100: '#F6EEE3',
+          200: '#E5D8CB',
+          300: '#d5c4b3',
+          400: '#a69993',
+          500: '#8a807c',
+          600: '#6F6662',
+          700: '#5a5350',
+          800: '#4a4441',
+          900: '#292525',
         },
       },
       fontFamily: {

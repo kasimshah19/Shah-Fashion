@@ -117,8 +117,6 @@ export function AdminReviewsPage() {
           </div>
         </div>
 
-        </div>
-
         {/* Mobile View */}
         <div className="md:hidden flex flex-col divide-y divide-gray-100">
           {loading ? (

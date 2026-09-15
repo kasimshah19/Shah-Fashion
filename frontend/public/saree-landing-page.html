@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paramparā — Handwoven sarees</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-primary: #800020;
+    --color-primary-hover: #650019;
+    --color-accent: #C9A227;
+    --color-background: #FFFAF0;
+    --color-surface: #FFFFFF;
+    --color-surface-muted: #F6EEE3;
+    --color-text-primary: #292525;
+    --color-text-secondary: #6F6662;
+    --color-text-on-primary: #FFFFFF;
+    --color-border: #E5D8CB;
+    --color-rose: #E8C7C8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--color-text-primary);
+    background: var(--color-background);
+    line-height: 1.6;
+  }
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+  :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+  /* motif divider */
+  .motif {
+    height: 22px;
+    background-image: repeating-linear-gradient(
+      135deg,
+      var(--color-accent) 0 2px,
+      transparent 2px 18px
+    );
+    opacity: 0.55;
+  }
+
+  /* nav */
+  header {
+    background: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky; top: 0; z-index: 10;
+  }
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 32px;
+    max-width: 1120px; margin: 0 auto;
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--color-primary);
+    letter-spacing: 0.5px;
+  }
+  .nav-links { display: flex; gap: 36px; font-size: 15px; font-weight: 500; }
+  .nav-links a { padding-bottom: 4px; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+  .nav-links a:hover { border-color: var(--color-primary); }
+  .nav-cta {
+    background: var(--color-primary); color: #fff;
+    padding: 10px 20px; border-radius: 4px; font-weight: 600; font-size: 14px;
+  }
+  .nav-cta:hover { background: var(--color-primary-hover); }
+  .nav-toggle { display: none; }
+
+  /* hero */
+  .hero {
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px;
+    align-items: center;
+    padding: 88px 32px 80px;
+    max-width: 1120px; margin: 0 auto;
+  }
+  .hero h1 {
+    font-size: clamp(36px, 4.6vw, 54px);
+    line-height: 1.15;
+    margin-bottom: 22px;
+    animation: rise 0.7s ease-out both;
+  }
+  .hero p.lede {
+    font-size: 17px; color: var(--color-text-secondary);
+    max-width: 46ch; margin-bottom: 32px;
+    animation: rise 0.7s ease-out 0.1s both;
+  }
+  .hero-ctas { display: flex; gap: 18px; align-items: center; animation: rise 0.7s ease-out 0.2s both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--color-primary); color: #fff;
+    padding: 15px 30px; border-radius: 4px;
+    font-weight: 600; font-size: 15px; border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--color-primary-hover); }
+  .btn-text {
+    font-weight: 600; font-size: 15px; color: var(--color-primary);
+    border-bottom: 1.5px solid var(--color-primary); padding-bottom: 2px;
+  }
+
+  .hero-visual {
+    aspect-ratio: 4 / 5;
+    border-radius: 6px;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(201,162,39,0.35), transparent 55%),
+      linear-gradient(155deg, var(--color-primary) 0%, #5c0016 60%, #3d000f 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-visual::before {
+    content: "";
+    position: absolute; inset: 18px;
+    border: 1px solid rgba(201,162,39,0.5);
+    border-radius: 4px;
+  }
+  .hero-visual .weave {
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 14px),
+                       repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 14px);
+  }
+  .hero-visual .tag {
+    position: absolute; left: 32px; bottom: 32px;
+    color: #FFF8E7; font-size: 14px;
+  }
+  .hero-visual .tag strong { display: block; font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+
+  /* collections */
+  .section { padding: 80px 32px; max-width: 1120px; margin: 0 auto; }
+  .section-head { margin-bottom: 40px; max-width: 56ch; }
+  .section-head h2 { font-size: 30px; margin-bottom: 10px; }
+  .section-head p { color: var(--color-text-secondary); font-size: 15.5px; }
+
+  .collections-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .collection-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 6px; overflow: hidden; }
+  .collection-swatch { height: 200px; }
+  .collection-card:nth-child(1) .collection-swatch { background: linear-gradient(160deg, #800020, #b3002e); }
+  .collection-card:nth-child(2) .collection-swatch { background: linear-gradient(160deg, #C9A227, #8a6e14); }
+  .collection-card:nth-child(3) .collection-swatch { background: linear-gradient(160deg, #E8C7C8, #c98f92); }
+  .collection-body { padding: 20px 22px 24px; }
+  .collection-body h3 { font-size: 18px; margin-bottom: 6px; }
+  .collection-body p { font-size: 14px; color: var(--color-text-secondary); margin-bottom: 14px; }
+  .collection-body .price { font-weight: 600; color: var(--color-primary); font-size: 15px; }
+
+  /* heritage split */
+  .heritage {
+    background: var(--color-surface-muted);
+  }
+  .heritage-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    padding: 80px 32px; max-width: 1120px; margin: 0 auto;
+  }
+  .heritage h2 { font-size: 30px; margin-bottom: 18px; }
+  .heritage p { color: var(--color-text-secondary); font-size: 15.5px; margin-bottom: 16px; max-width: 50ch; }
+  .swatch-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .swatch-grid div { aspect-ratio: 1; border-radius: 4px; }
+  .swatch-grid div:nth-child(1) { background: var(--color-primary); }
+  .swatch-grid div:nth-child(2) { background: var(--color-accent); }
+  .swatch-grid div:nth-child(3) { background: var(--color-rose); }
+  .swatch-grid div:nth-child(4) { background: #b3002e; }
+  .swatch-grid div:nth-child(5) { background: #3d2e07; }
+  .swatch-grid div:nth-child(6) { background: var(--color-text-primary); }
+
+  /* testimonial */
+  .testimonial { background: var(--color-rose); padding: 72px 32px; text-align: center; }
+  .testimonial blockquote {
+    font-family: 'Playfair Display', serif; font-weight: 500;
+    font-size: clamp(20px, 2.6vw, 28px); max-width: 46ch; margin: 0 auto 18px;
+    color: #4a1620; line-height: 1.4;
+  }
+  .testimonial cite { font-style: normal; font-size: 14px; color: #6b3540; }
+
+  /* promo banner */
+  .promo {
+    background: var(--color-primary); color: #fff;
+    padding: 72px 32px; text-align: center;
+  }
+  .promo h2 { color: #FFF8E7; font-size: 28px; margin-bottom: 12px; }
+  .promo p { color: rgba(255,248,231,0.8); max-width: 46ch; margin: 0 auto 28px; font-size: 15.5px; }
+  .btn-gold {
+    display: inline-block; background: var(--color-accent); color: #3B2E08;
+    padding: 15px 30px; border-radius: 4px; font-weight: 600; font-size: 15px; border: none; cursor: pointer;
+  }
+  .btn-gold:hover { background: #B8931F; }
+
+  /* footer */
+  footer { background: var(--color-text-primary); color: #cfc7c3; padding: 56px 32px 32px; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; max-width: 1120px; margin: 0 auto 40px; }
+  .footer-grid h4 { color: #fff; font-size: 14px; font-weight: 600; margin-bottom: 14px; }
+  .footer-grid a { display: block; font-size: 14px; color: #cfc7c3; margin-bottom: 10px; }
+  .footer-grid a:hover { color: var(--color-accent); }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 20px; color: #fff; margin-bottom: 10px; }
+  .footer-grid p { font-size: 14px; color: #a89e99; max-width: 32ch; }
+  .footer-bottom { max-width: 1120px; margin: 0 auto; padding-top: 24px; border-top: 1px solid #45403d; font-size: 13px; color: #a89e99; }
+
+  @media (max-width: 860px) {
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding-top: 56px; }
+    .hero-visual { aspect-ratio: 16 / 10; }
+    .collections-grid { grid-template-columns: 1fr; }
+    .heritage-inner { grid-template-columns: 1fr; gap: 36px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Paramparā</div>
+    <div class="nav-links">
+      <a href="#collections">Collections</a>
+      <a href="#heritage">Weaves</a>
+      <a href="#">Bridal</a>
+      <a href="#">About</a>
+    </div>
+    <a href="#" class="nav-cta">Shop now</a>
+  </nav>
+</header>
+
+<div class="motif"></div>
+
+<section class="hero">
+  <div>
+    <h1>Six yards, woven by hand, worn for a lifetime</h1>
+    <p class="lede">From the silk looms of Kanchipuram to handspun cotton from Bengal, every saree in our collection is sourced directly from the weavers who make it — no mass production, no shortcuts.</p>
+    <div class="hero-ctas">
+      <a href="#collections" class="btn-primary">Shop the collection</a>
+      <a href="#heritage" class="btn-text">Meet the weavers</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="weave"></div>
+    <div class="tag"><strong>Kanchipuram silk</strong>Zari border, hand-loomed in Tamil Nadu</div>
+  </div>
+</section>
+
+<div class="motif"></div>
+
+<section class="section" id="collections">
+  <div class="section-head">
+    <h2>Shop by weave</h2>
+    <p>Every region has its own hand. These are the three we're known for.</p>
+  </div>
+  <div class="collections-grid">
+    <div class="collection-card">
+      <div class="collection-swatch"></div>
+      <div class="collection-body">
+        <h3>Kanchipuram silk</h3>
+        <p>Heavy silk, contrast zari borders — built for weddings and festivals.</p>
+        <div class="price">From ₹14,500</div>
+      </div>
+    </div>
+    <div class="collection-card">
+      <div class="collection-swatch"></div>
+      <div class="collection-body">
+        <h3>Banarasi brocade</h3>
+        <p>Fine gold thread work on silk, woven in Varanasi's old city looms.</p>
+        <div class="price">From ₹11,200</div>
+      </div>
+    </div>
+    <div class="collection-card">
+      <div class="collection-swatch"></div>
+      <div class="collection-body">
+        <h3>Handloom cotton</h3>
+        <p>Breathable, everyday sarees in block-printed and ikat patterns.</p>
+        <div class="price">From ₹2,800</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="heritage" id="heritage">
+  <div class="heritage-inner">
+    <div>
+      <h2>Every saree has a name behind it</h2>
+      <p>We work with 40 weaving families across Tamil Nadu, Uttar Pradesh, and West Bengal. Each product page names the weaver, the region, and how long the piece took to make — usually somewhere between 5 days and 6 weeks.</p>
+      <p>No two pieces are identical. That's not a flaw in the process; it's the point of it.</p>
+      <a href="#" class="btn-text">Read about our weavers</a>
+    </div>
+    <div class="swatch-grid">
+      <div></div><div></div><div></div>
+      <div></div><div></div><div></div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <blockquote>"I wore my Kanchipuram for my sister's wedding and three aunts asked where I found a weaver this good."</blockquote>
+  <cite>— Meera R., Bengaluru</cite>
+</section>
+
+<section class="promo">
+  <h2>Festive collection is live</h2>
+  <p>New Banarasi and Kanchipuram pieces for the wedding season, in limited runs of 8–10 per design.</p>
+  <a href="#collections" class="btn-gold">Shop the sale</a>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">Paramparā</div>
+      <p>Handwoven sarees sourced directly from weaving families across India.</p>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <a href="#">Kanchipuram silk</a>
+      <a href="#">Banarasi brocade</a>
+      <a href="#">Handloom cotton</a>
+      <a href="#">Bridal edit</a>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="#">Our weavers</a>
+      <a href="#">Sourcing</a>
+      <a href="#">Care guide</a>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <a href="#">Shipping</a>
+      <a href="#">Returns</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Paramparā. All sarees shipped with a note from the weaver who made them.</div>
+</footer>
+
+</body>
+</html>

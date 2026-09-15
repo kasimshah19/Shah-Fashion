@@ -37,7 +37,7 @@ export function Header() {
           <Link to="/" className="shrink-0 flex items-center gap-2.5">
             <img src="/favicon.png" alt="Shah Fashion" className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl shadow-sm" />
             <h1 className="font-serif text-xl sm:text-2xl font-bold text-brand tracking-tight leading-none">
-              Shah <span className="text-gray-800">Fashion</span>
+              Shah Fashion
             </h1>
           </Link>
 
