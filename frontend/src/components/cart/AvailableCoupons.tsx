@@ -94,19 +94,19 @@ export function AvailableCoupons({ onApply, subtotal }: AvailableCouponsProps) {
                   </span>
                 )}
               </div>
-              <div className="flex justify-between items-end mt-1">
-                <p className="text-xs text-gray-600 max-w-[75%]">
-                  Get {coupon.discount_type === 'percent' ? `${coupon.discount_value}%` : formatPrice(coupon.discount_value)} off on minimum order of {formatPrice(coupon.min_order_value)}.
-                  <br />
-                  <span className="text-[10px] text-gray-500 mt-0.5 inline-block">
-                    {isEligible ? 'Click to apply.' : 'Add more items to unlock.'}
-                  </span>
-                </p>
+              <p className="text-sm text-gray-800 mt-2 font-medium">
+                Get {coupon.discount_type === 'percent' ? `${coupon.discount_value}%` : formatPrice(coupon.discount_value)} off on minimum order of {formatPrice(coupon.min_order_value)}.
+              </p>
+              
+              <div className="flex flex-col gap-1 mt-3 pt-2 border-t border-dashed border-primary/20">
                 {coupon.valid_to && (
-                  <span className="text-[10px] text-gray-400 bg-white px-1.5 py-0.5 rounded border border-gray-100 whitespace-nowrap">
-                    Till {new Date(coupon.valid_to).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}
-                  </span>
+                  <p className="text-xs text-gray-600">
+                    <strong className="text-gray-800 font-semibold">Valid till:</strong> {new Date(coupon.valid_to).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
+                  </p>
                 )}
+                <p className="text-xs text-gray-600">
+                  <strong className="text-gray-800 font-semibold">How to apply:</strong> {isEligible ? 'Click on the "APPLY" button above or tap this card to apply.' : 'Add more items to your cart to unlock this offer.'}
+                </p>
               </div>
             </div>
           );
