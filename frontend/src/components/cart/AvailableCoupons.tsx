@@ -94,9 +94,20 @@ export function AvailableCoupons({ onApply, subtotal }: AvailableCouponsProps) {
                   </span>
                 )}
               </div>
-              <p className="text-xs text-gray-600">
-                Get {coupon.discount_type === 'percent' ? `${coupon.discount_value}%` : formatPrice(coupon.discount_value)} off on minimum order of {formatPrice(coupon.min_order_value)}.
-              </p>
+              <div className="flex justify-between items-end mt-1">
+                <p className="text-xs text-gray-600 max-w-[75%]">
+                  Get {coupon.discount_type === 'percent' ? `${coupon.discount_value}%` : formatPrice(coupon.discount_value)} off on minimum order of {formatPrice(coupon.min_order_value)}.
+                  <br />
+                  <span className="text-[10px] text-gray-500 mt-0.5 inline-block">
+                    {isEligible ? 'Click to apply.' : 'Add more items to unlock.'}
+                  </span>
+                </p>
+                {coupon.valid_to && (
+                  <span className="text-[10px] text-gray-400 bg-white px-1.5 py-0.5 rounded border border-gray-100 whitespace-nowrap">
+                    Till {new Date(coupon.valid_to).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}
+                  </span>
+                )}
+              </div>
             </div>
           );
         })}
