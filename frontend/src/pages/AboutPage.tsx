@@ -340,16 +340,6 @@ export function AboutPage() {
         </div>
       </section>
 
-      <section className="py-32 bg-maroon text-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '24px 24px' }}></div>
-        <AnimatedSection className="relative z-10">
-          <h2 className="font-serif text-4xl md:text-6xl font-semibold mb-10 drop-shadow-sm">Continue the tradition.</h2>
-          <Link to="/shop/all" className="inline-block bg-white text-maroon font-semibold px-10 py-5 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 hover:bg-gray-50 motion-safe:transition-all duration-300">
-            Shop the Collection
-          </Link>
-        </AnimatedSection>
-      </section>
-
     </div>
   );
 }

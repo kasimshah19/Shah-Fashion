@@ -5,6 +5,7 @@ import { AuthProvider } from './context/AuthContext';
 import { ToastProvider } from './components/ui/Toast';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
+import { PreFooterBanner } from './components/layout/PreFooterBanner';
 import { MobileNav } from './components/layout/MobileNav';
 import { WhatsAppButton } from './components/layout/WhatsAppButton';
 import { HomePage } from './pages/HomePage';
@@ -45,6 +46,7 @@ function Layout({ children }: { children: React.ReactNode }) {
       <OfflineFallback />
       <Header />
       <main className="flex-1 pb-24 lg:pb-0 w-full overflow-hidden">{children}</main>
+      <PreFooterBanner />
       <Footer />
       <MobileNav />
       <WhatsAppButton />
