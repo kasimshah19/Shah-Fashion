@@ -91,7 +91,7 @@ interface CartContextValue {
   updateQuantity: (productId: string, quantity: number) => void;
   toggleSaveForLater: (productId: string) => void;
   clearCart: () => void;
-  getCartTotal: (products: Product[]) => { subtotal: number; discount: number; total: number; couponDiscount: number };
+  getCartTotal: (products: Product[]) => { mrpTotal: number; subtotal: number; discount: number; total: number; couponDiscount: number };
   activeItems: CartItem[];
   savedItems: CartItem[];
   appliedCoupon: Coupon | null;
@@ -172,6 +172,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
         }
       }
       return { 
+        mrpTotal,
         subtotal, 
         discount: mrpTotal - subtotal, 
         couponDiscount,

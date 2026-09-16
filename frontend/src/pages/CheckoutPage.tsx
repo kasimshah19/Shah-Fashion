@@ -69,7 +69,7 @@ export function CheckoutPage() {
     loadProducts();
   }, [activeItems]);
 
-  const { subtotal, discount, couponDiscount, total } = getCartTotal(products);
+  const { mrpTotal, subtotal, discount, couponDiscount, total } = getCartTotal(products);
   const shipping = subtotal >= SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
   const expressExtra = deliverySlot.includes('Express') ? 149 : 0;
   const grandTotal = total + shipping + expressExtra;
@@ -272,7 +272,7 @@ export function CheckoutPage() {
         <div className="card p-4 sm:p-6 h-fit sticky top-24">
           <h2 className="font-serif text-lg font-semibold mb-4">Summary</h2>
           <div className="space-y-2 text-sm">
-            <div className="flex justify-between"><span className="text-gray-500">Subtotal</span><span>{formatPrice(subtotal)}</span></div>
+            <div className="flex justify-between"><span className="text-gray-500">Subtotal</span><span>{formatPrice(mrpTotal)}</span></div>
             {discount > 0 && <div className="flex justify-between text-green-600"><span>Discount</span><span>-{formatPrice(discount)}</span></div>}
             {couponDiscount > 0 && <div className="flex justify-between text-green-600"><span>Coupon Discount</span><span>-{formatPrice(couponDiscount)}</span></div>}
             <div className="flex justify-between"><span className="text-gray-500">Shipping</span><span>{shipping === 0 ? 'FREE' : formatPrice(shipping)}</span></div>

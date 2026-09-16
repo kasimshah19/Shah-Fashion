@@ -40,7 +40,7 @@ export function CartPage() {
     loadProducts();
   }, [activeItems, savedItems]);
 
-  const { subtotal, discount, couponDiscount, total } = getCartTotal(products);
+  const { mrpTotal, subtotal, discount, couponDiscount, total } = getCartTotal(products);
   const shipping = subtotal >= SHIPPING_THRESHOLD || subtotal === 0 ? 0 : SHIPPING_COST;
   const grandTotal = total + shipping;
 
@@ -164,7 +164,7 @@ export function CartPage() {
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
                 <span className="text-gray-500">Subtotal</span>
-                <span>{formatPrice(subtotal)}</span>
+                <span>{formatPrice(mrpTotal)}</span>
               </div>
               {discount > 0 && (
                 <div className="flex justify-between text-green-600">
