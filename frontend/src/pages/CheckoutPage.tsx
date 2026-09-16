@@ -163,16 +163,16 @@ export function CheckoutPage() {
               {user && user.addresses.length > 0 && (
                 <div className="space-y-2 mb-4">
                   {user.addresses.map((addr) => (
-                    <label key={addr.id} className={`block p-3 border rounded-lg cursor-pointer ${selectedAddress === addr.id ? 'border-maroon bg-maroon/5' : 'border-gray-200'}`}>
-                      <input type="radio" name="address" checked={selectedAddress === addr.id} onChange={() => setSelectedAddress(addr.id)} className="accent-maroon mr-2" />
-                      <span className="text-sm">
+                    <label key={addr.id} className={`flex items-start gap-2 p-3 border rounded-lg cursor-pointer ${selectedAddress === addr.id ? 'border-maroon bg-maroon/5' : 'border-gray-200'}`}>
+                      <input type="radio" name="address" checked={selectedAddress === addr.id} onChange={() => setSelectedAddress(addr.id)} className="accent-maroon mt-0.5 shrink-0" />
+                      <div className="text-sm min-w-0">
                         <strong>{addr.name}</strong> · {addr.phone}<br />
-                        {addr.addressLine1}, {addr.city} — {addr.pincode}
-                      </span>
+                        <span className="text-gray-600 block mt-1">{addr.addressLine1}, {addr.city} — {addr.pincode}</span>
+                      </div>
                     </label>
                   ))}
-                  <label className={`block p-3 border rounded-lg cursor-pointer ${selectedAddress === 'new' ? 'border-maroon bg-maroon/5' : 'border-gray-200'}`}>
-                    <input type="radio" name="address" checked={selectedAddress === 'new'} onChange={() => setSelectedAddress('new')} className="accent-maroon mr-2" />
+                  <label className={`flex items-center gap-2 p-3 border rounded-lg cursor-pointer ${selectedAddress === 'new' ? 'border-maroon bg-maroon/5' : 'border-gray-200'}`}>
+                    <input type="radio" name="address" checked={selectedAddress === 'new'} onChange={() => setSelectedAddress('new')} className="accent-maroon shrink-0" />
                     <span className="text-sm font-medium">Add new address</span>
                   </label>
                 </div>
@@ -198,9 +198,9 @@ export function CheckoutPage() {
               <h2 className="font-medium text-lg mb-4">Delivery Option</h2>
               <div className="space-y-2">
                 {DELIVERY_SLOTS.map((slot) => (
-                  <label key={slot} className={`block p-3 border rounded-lg cursor-pointer ${deliverySlot === slot ? 'border-maroon bg-maroon/5' : 'border-gray-200'}`}>
-                    <input type="radio" name="delivery" checked={deliverySlot === slot} onChange={() => setDeliverySlot(slot)} className="accent-maroon mr-2" />
-                    <span className="text-sm">{slot}</span>
+                  <label key={slot} className={`flex items-center gap-2 p-3 border rounded-lg cursor-pointer ${deliverySlot === slot ? 'border-maroon bg-maroon/5' : 'border-gray-200'}`}>
+                    <input type="radio" name="delivery" checked={deliverySlot === slot} onChange={() => setDeliverySlot(slot)} className="accent-maroon shrink-0" />
+                    <span className="text-sm min-w-0">{slot}</span>
                   </label>
                 ))}
               </div>

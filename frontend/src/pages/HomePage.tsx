@@ -124,8 +124,8 @@ export function HomePage() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#4a0d20]/70 via-[#4a0d20]/40 to-transparent" />
             <div className="relative page-container h-full flex flex-col justify-center py-16 sm:py-24">
-              <h2 className="font-serif text-3xl sm:text-5xl font-bold text-white mb-2 max-w-lg break-words leading-tight">{slide.title}</h2>
-              <p className="text-white/80 text-sm sm:text-lg mb-6 max-w-md">{slide.subtitle}</p>
+              <h2 className="font-serif text-3xl sm:text-5xl font-bold text-white mb-2 max-w-full sm:max-w-lg break-words leading-tight">{slide.title}</h2>
+              <p className="text-white/80 text-sm sm:text-lg mb-6 max-w-full sm:max-w-md">{slide.subtitle}</p>
               <Link to={slide.href} className="btn-gold w-fit pointer-events-auto">{slide.cta}</Link>
             </div>
           </div>
@@ -151,9 +151,9 @@ export function HomePage() {
       <section className="py-8 sm:py-12">
         <div className="page-container">
           <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-maroon mb-6 text-center">Shop by Category</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+          <div className="flex sm:grid sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 overflow-x-auto sm:overflow-visible snap-x snap-mandatory hide-scrollbar pb-4 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
             {categories.map((cat, idx) => (
-              <Link key={idx} to={cat.href} className="group relative aspect-[4/5] rounded-xl overflow-hidden">
+              <Link key={idx} to={cat.href} className="shrink-0 w-[45vw] sm:w-auto snap-start group relative aspect-[4/5] rounded-xl overflow-hidden">
                 <img src={cat.image} alt={cat.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 <span className="absolute bottom-3 left-3 right-3 text-white font-medium text-sm sm:text-ivory">{cat.label}</span>

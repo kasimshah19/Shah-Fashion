@@ -46,7 +46,7 @@ function Layout({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen flex flex-col">
       <OfflineFallback />
       <Header />
-      <main className="flex-1 pb-24 lg:pb-0 w-full overflow-hidden">{children}</main>
+      <main className="flex-1 w-full overflow-hidden">{children}</main>
       <PreFooterBanner />
       <Footer />
       <MobileNav />

@@ -71,7 +71,7 @@ export function ProductCard({ product, listView = false }: ProductCardProps) {
   }
 
   return (
-    <Link to={`/product/${product.id}`} className="card group hover:shadow-md transition-all duration-200 animate-fade-in">
+    <Link to={`/product/${product.id}`} className="card group hover:shadow-md transition-all duration-200 animate-fade-in flex flex-col h-full">
       <div className="relative aspect-[3/4] overflow-hidden">
         <img
           src={product.images[0]}
@@ -98,10 +98,12 @@ export function ProductCard({ product, listView = false }: ProductCardProps) {
           <ShoppingBag size={16} /> Quick Add
         </button>
       </div>
-      <div className="p-3">
-        <p className="text-xs text-gray-500 mb-0.5">{product.fabric}</p>
+      <div className="p-3 flex-1 flex flex-col justify-between">
+        <div>
+          <p className="text-xs text-gray-500 mb-0.5">{product.fabric}</p>
         <h3 className="font-medium text-sm line-clamp-2 mb-1.5 leading-snug">{product.name}</h3>
         <Rating value={product.rating} count={product.reviewCount} />
+        </div>
         <div className="mt-2 flex items-baseline gap-2 flex-wrap">
           <span className="font-semibold text-maroon">{formatPrice(product.discountedPrice)}</span>
           {product.discountPercent > 0 && (

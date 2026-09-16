@@ -215,8 +215,10 @@ export function ProductPage() {
 
   const scrollGallery = (dir: 'left' | 'right') => {
     setActiveImage((prev) => {
-      if (dir === 'left') return prev > 0 ? prev - 1 : product.images.length - 1;
-      return prev < product.images.length - 1 ? prev + 1 : 0;
+      const next = dir === 'left' ? (prev > 0 ? prev - 1 : product.images.length - 1) : (prev < product.images.length - 1 ? prev + 1 : 0);
+      const el = document.getElementById(`gallery-img-${next}`);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      return next;
     });
   };
 
@@ -236,29 +238,39 @@ export function ProductPage() {
           {/* Gallery */}
           <div>
             <div ref={galleryRef} className="relative aspect-[3/4] rounded-xl overflow-hidden bg-gray-100 group">
-              <ProgressiveImage
-                src={product.images[activeImage]}
-                alt={product.name}
-                className="cursor-zoom-in"
-                onClick={() => setIsFullscreenZoom(true)}
-              />
-              <button onClick={() => scrollGallery('left')} className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center shadow">
+              <div className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scrollbar-hide scroll-smooth" id="product-gallery">
+                {product.images.map((img, i) => (
+                  <div key={i} id={`gallery-img-${i}`} className="min-w-full shrink-0 snap-center h-full">
+                    <ProgressiveImage
+                      src={img}
+                      alt={`${product.name} - view ${i + 1}`}
+                      className="w-full h-full object-cover cursor-zoom-in"
+                      onClick={() => { setActiveImage(i); setIsFullscreenZoom(true); }}
+                    />
+                  </div>
+                ))}
+              </div>
+              <button onClick={() => scrollGallery('left')} className="hidden lg:flex absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full items-center justify-center shadow opacity-0 group-hover:opacity-100 transition-opacity">
                 <ChevronLeft size={20} />
               </button>
-              <button onClick={() => scrollGallery('right')} className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center shadow">
+              <button onClick={() => scrollGallery('right')} className="hidden lg:flex absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full items-center justify-center shadow opacity-0 group-hover:opacity-100 transition-opacity">
                 <ChevronRight size={20} />
               </button>
-              <div className="absolute top-3 left-3 flex flex-col gap-1">
+              <div className="absolute top-3 left-3 flex flex-col gap-1 z-10 pointer-events-none">
                 {product.isSale && <Badge variant="sale">{product.discountPercent}% OFF</Badge>}
                 {product.isNew && <Badge variant="new">New</Badge>}
                 {product.isBestseller && <Badge variant="bestseller">Bestseller</Badge>}
               </div>
             </div>
-            <div className="flex gap-2 mt-3 overflow-x-auto scrollbar-hide">
+            <div className="flex gap-2 mt-3 overflow-x-auto scrollbar-hide pb-1">
               {product.images.map((img, i) => (
                 <button
                   key={i}
-                  onClick={() => setActiveImage(i)}
+                  onClick={() => {
+                    setActiveImage(i);
+                    const el = document.getElementById(`gallery-img-${i}`);
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                  }}
                   className={`shrink-0 w-16 h-20 rounded-lg overflow-hidden border-2 transition-colors ${activeImage === i ? 'border-maroon' : 'border-transparent'}`}
                 >
                   <ProgressiveImage src={img} alt="" />

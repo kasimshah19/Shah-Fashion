@@ -54,16 +54,16 @@ export function Header() {
         </nav>
 
         {/* Main bar (Bottom row) */}
-        <div className="flex items-center gap-3 h-16 sm:h-20 pb-2">
+        <div className="flex items-center gap-1 sm:gap-3 h-14 sm:h-20 pb-1 sm:pb-2">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 -ml-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
+            className="lg:hidden p-2 -ml-2 min-w-[44px] min-h-[44px] flex items-center justify-center shrink-0"
           >
             {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
 
-          <Link to="/" className="shrink-0 flex items-center gap-2.5">
-            <h1 className="font-serif text-2xl sm:text-3xl font-bold text-brand tracking-tight leading-none">
+          <Link to="/" className="shrink-1 sm:shrink-0 flex items-center gap-2">
+            <h1 className="font-serif text-xl sm:text-3xl font-bold text-brand tracking-tight leading-none truncate">
               Shah Fashion
             </h1>
           </Link>
@@ -72,7 +72,7 @@ export function Header() {
             <SearchBar />
           </div>
 
-          <div className="flex items-center gap-1 sm:gap-2 ml-auto">
+          <div className="flex items-center gap-0 sm:gap-2 ml-auto shrink-0">
             <button
               onClick={() => setSearchOpen(!searchOpen)}
               className="md:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"

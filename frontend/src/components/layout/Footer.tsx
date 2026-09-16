@@ -3,9 +3,9 @@ import { Instagram, Facebook, MessageCircle } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="bg-bottle text-white mt-auto pb-20 lg:pb-0">
+    <footer className="bg-bottle text-white mt-auto pb-[90px] lg:pb-0">
       <div className="page-container py-10 sm:py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-3">
               <h3 className="font-serif text-xl sm:text-2xl font-bold text-gold tracking-tight leading-none">
