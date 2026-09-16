@@ -8,7 +8,12 @@ export function PWAInstallPrompt() {
   const [showIOSPrompt, setShowIOSPrompt] = useState(false);
 
   useEffect(() => {
-    // Removed localStorage logic to always allow prompt
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || (window.navigator as any).standalone === true;
+    
+    // Always show if not installed (per user request)
+    if (!isStandalone) {
+      setShowPrompt(true);
+    }
 
     // Android / Chrome desktop
     const handleBeforeInstallPrompt = (e: Event) => {
@@ -23,7 +28,6 @@ export function PWAInstallPrompt() {
     const ua = window.navigator.userAgent;
     const isIOSDevice = /iPad|iPhone|iPod/.test(ua) && !(window as any).MSStream;
     const isSafari = /Safari/.test(ua) && !/Chrome/.test(ua);
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || (window.navigator as any).standalone === true;
 
     if (isIOSDevice && isSafari && !isStandalone) {
       setIsIOS(true);
@@ -36,7 +40,10 @@ export function PWAInstallPrompt() {
   }, []);
 
   const handleInstallClick = async () => {
-    if (!deferredPrompt) return;
+    if (!deferredPrompt) {
+      alert("Please use your browser's menu (3 dots) and select 'Install App' or 'Add to Home Screen' to install.");
+      return;
+    }
 
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
