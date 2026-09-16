@@ -48,7 +48,7 @@ export function LoginPage() {
     <div className="page-container py-8 pb-24 lg:pb-8 animate-fade-in">
       <div className="max-w-md mx-auto">
         <div className="text-center mb-6">
-          <img src="/shah-fashion-main-logo.svg" alt="Shah Fashion" className="w-14 h-14 rounded-2xl mx-auto mb-4 shadow-sm" />
+          <img src="/branding/logo/shah-fashion-logo.svg" alt="Shah Fashion" className="w-14 h-14 rounded-2xl mx-auto mb-4 shadow-sm" />
           <h1 className="font-serif text-2xl sm:text-3xl font-semibold text-brand">Welcome Back</h1>
           <p className="text-gray-500 text-sm mt-2">
             Login to track orders, wishlist & saved addresses

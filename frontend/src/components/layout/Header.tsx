@@ -35,7 +35,7 @@ export function Header() {
           </button>
 
           <Link to="/" className="shrink-0 flex items-center gap-2.5">
-            <img src="/shah-fashion-main-logo.svg" alt="Shah Fashion" className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl shadow-sm" />
+            <img src="/branding/logo/shah-fashion-logo.svg" alt="Shah Fashion" className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl shadow-sm" />
             <h1 className="font-serif text-xl sm:text-2xl font-bold text-brand tracking-tight leading-none">
               Shah Fashion
             </h1>

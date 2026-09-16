@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'favicon-32x32.png', 'favicon-48x48.png'],
+      includeAssets: ['branding/favicon/favicon.ico', 'branding/favicon/favicon-32x32.png', 'branding/favicon/favicon-48x48.png'],
       manifest: {
         name: 'Shah Fashion — Premium Sarees & Blouse Pieces',
         short_name: 'Shah Fashion',
@@ -19,17 +19,17 @@ export default defineConfig({
         start_url: '/',
         icons: [
           {
-            src: 'icon-192.png',
+            src: '/branding/pwa/icon-192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'icon-512.png',
+            src: '/branding/pwa/icon-512.png',
             sizes: '512x512',
             type: 'image/png'
           },
           {
-            src: 'maskable-512.png',
+            src: '/branding/pwa/icon-maskable-512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'maskable'
