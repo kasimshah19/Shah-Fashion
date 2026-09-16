@@ -234,7 +234,7 @@ const defaultHeroSlides = [
     cta: 'Shop Bridal',
     href: '/shop/bridal',
     bg: 'from-red-900/90 to-maroon/90',
-    image: '/hero-1536x1024.webp',
+    image: '/hero/slide1.jpg',
   },
 ];
 
