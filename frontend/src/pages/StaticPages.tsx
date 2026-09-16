@@ -75,7 +75,7 @@ export function ContactPage() {
   return (
     <div className="min-h-screen relative bg-[#FAFAF8] overflow-hidden">
       {/* Hero Carousel */}
-      <section ref={heroRef} className={`relative overflow-hidden w-full min-h-[500px] sm:min-h-[600px] md:min-h-[75vh] lg:min-h-[85vh] transition-all duration-1000 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <section ref={heroRef} className={`relative overflow-hidden w-full h-[clamp(500px,55vw,750px)] min-h-[500px] transition-all duration-1000 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         {heroSlides.map((slide, idx) => (
           <div
             key={idx}
@@ -84,7 +84,7 @@ export function ContactPage() {
             <img 
               src={slide.image} 
               alt="" 
-              className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[10s] ease-linear ${idx === currentSlide ? 'scale-110' : 'scale-100'}`} 
+              className={`absolute inset-0 w-full h-full object-cover object-[center_15%] transition-transform duration-[10s] ease-linear ${idx === currentSlide ? 'scale-110' : 'scale-100'}`} 
               loading={idx === 0 ? "eager" : "lazy"}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-maroon/90 via-black/40 to-transparent" />
@@ -433,7 +433,7 @@ export function ShippingReturnsPage() {
   return (
     <div className="min-h-screen relative bg-[#FAFAF8] overflow-hidden">
       {/* Hero Carousel */}
-      <section ref={heroRef} className={`relative overflow-hidden w-full min-h-[500px] sm:min-h-[600px] md:min-h-[75vh] lg:min-h-[85vh] transition-all duration-1000 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <section ref={heroRef} className={`relative overflow-hidden w-full h-[clamp(500px,55vw,750px)] min-h-[500px] transition-all duration-1000 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
         {heroSlides.map((slide, idx) => (
           <div
             key={idx}
@@ -442,7 +442,7 @@ export function ShippingReturnsPage() {
             <img 
               src={slide.image} 
               alt="" 
-              className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[10s] ease-linear ${idx === currentSlide ? 'scale-110' : 'scale-100'}`} 
+              className={`absolute inset-0 w-full h-full object-cover object-[center_15%] transition-transform duration-[10s] ease-linear ${idx === currentSlide ? 'scale-110' : 'scale-100'}`} 
               loading={idx === 0 ? "eager" : "lazy"}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-maroon/90 via-black/40 to-transparent" />
@@ -738,7 +738,7 @@ export function FAQPage() {
   return (
     <div className="min-h-screen animate-fade-in relative bg-[#FAFAF8] overflow-hidden">
       {/* Hero Carousel */}
-      <section ref={heroRef} className={`relative overflow-hidden w-full min-h-[500px] sm:min-h-[600px] md:min-h-[75vh] lg:min-h-[85vh] transition-all duration-1000 ${heroVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <section ref={heroRef} className={`relative overflow-hidden w-full h-[clamp(500px,55vw,750px)] min-h-[500px] transition-all duration-1000 ${heroVisible ? 'opacity-100' : 'opacity-0'}`}>
         {heroSlides.map((slide, idx) => (
           <div
             key={idx}
@@ -747,7 +747,7 @@ export function FAQPage() {
             <img 
               src={slide.image} 
               alt="" 
-              className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[10s] ease-linear ${idx === currentSlide ? 'scale-110' : 'scale-100'}`} 
+              className={`absolute inset-0 w-full h-full object-cover object-[center_15%] transition-transform duration-[10s] ease-linear ${idx === currentSlide ? 'scale-110' : 'scale-100'}`} 
               loading={idx === 0 ? "eager" : "lazy"}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-maroon/90 via-black/40 to-transparent" />
@@ -893,7 +893,7 @@ export function SizeGuidePage() {
   return (
     <div className="min-h-screen animate-fade-in relative bg-[#FAFAF8] overflow-hidden">
       {/* Hero Carousel */}
-      <section className="relative overflow-hidden w-full min-h-[500px] sm:min-h-[600px] md:min-h-[75vh] lg:min-h-[85vh]">
+      <section className="relative overflow-hidden w-full h-[clamp(500px,55vw,750px)] min-h-[500px]">
         {heroSlides.map((slide, idx) => (
           <div
             key={idx}
@@ -902,7 +902,7 @@ export function SizeGuidePage() {
             <img 
               src={slide.image} 
               alt="" 
-              className="absolute inset-0 w-full h-full object-cover" 
+              className="absolute inset-0 w-full h-full object-cover object-[center_15%]" 
               loading={idx === 0 ? "eager" : "lazy"}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-maroon/90 via-black/40 to-transparent" />
