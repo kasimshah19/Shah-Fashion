@@ -8,18 +8,7 @@ export function PWAInstallPrompt() {
   const [showIOSPrompt, setShowIOSPrompt] = useState(false);
 
   useEffect(() => {
-    const isMobile = window.innerWidth <= 768;
-
-    // Check if prompt was dismissed in the last 7 days (desktop only)
-    if (!isMobile) {
-      const lastDismissed = localStorage.getItem('pwa-prompt-dismissed');
-      if (lastDismissed) {
-        const daysSinceDismissed = (Date.now() - parseInt(lastDismissed, 10)) / (1000 * 60 * 60 * 24);
-        if (daysSinceDismissed < 7) {
-          return; // Don't show if dismissed recently
-        }
-      }
-    }
+    // Removed localStorage logic to always allow prompt
 
     // Android / Chrome desktop
     const handleBeforeInstallPrompt = (e: Event) => {
@@ -61,10 +50,6 @@ export function PWAInstallPrompt() {
   const handleDismiss = () => {
     setShowPrompt(false);
     setShowIOSPrompt(false);
-    const isMobile = window.innerWidth <= 768;
-    if (!isMobile) {
-      localStorage.setItem('pwa-prompt-dismissed', Date.now().toString());
-    }
   };
 
   if (!showPrompt && !showIOSPrompt) return null;
