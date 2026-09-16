@@ -8,6 +8,7 @@ import { Footer } from './components/layout/Footer';
 import { PreFooterBanner } from './components/layout/PreFooterBanner';
 import { MobileNav } from './components/layout/MobileNav';
 import { WhatsAppButton } from './components/layout/WhatsAppButton';
+import { UpdatePrompt } from './components/pwa/UpdatePrompt';
 import { HomePage } from './pages/HomePage';
 import { ShopPage } from './pages/ShopPage';
 import { SearchPage } from './pages/SearchPage';
@@ -51,6 +52,7 @@ function Layout({ children }: { children: React.ReactNode }) {
       <MobileNav />
       <WhatsAppButton />
       <PWAInstallPrompt />
+      <UpdatePrompt />
     </div>
   );
 }

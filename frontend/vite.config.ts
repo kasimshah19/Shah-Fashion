@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      registerType: 'autoUpdate',
+      registerType: 'prompt',
       includeAssets: ['favicon.ico', 'favicon-32x32.png', 'favicon-48x48.png'],
       manifest: {
         name: 'Shah Fashion — Premium Sarees & Blouse Pieces',
