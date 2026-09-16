@@ -25,8 +25,24 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-gray-100">
       <div className="page-container">
-        {/* Top bar */}
-        <div className="flex items-center gap-3 h-14 sm:h-16">
+        {/* Desktop nav (Top row) */}
+        <nav className="hidden lg:flex items-center justify-center gap-8 h-10 text-xs">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              to={link.href}
+              className="font-medium text-gray-600 hover:text-brand transition-colors py-2"
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Link to="/shop/new-arrivals" className="font-medium text-brand hover:text-maroon transition-colors py-2">
+            New Arrivals
+          </Link>
+        </nav>
+
+        {/* Main bar (Bottom row) */}
+        <div className="flex items-center gap-3 h-16 sm:h-20 pb-2">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="lg:hidden p-2 -ml-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
@@ -35,12 +51,12 @@ export function Header() {
           </button>
 
           <Link to="/" className="shrink-0 flex items-center gap-2.5">
-            <h1 className="font-serif text-xl sm:text-2xl font-bold text-brand tracking-tight leading-none">
+            <h1 className="font-serif text-2xl sm:text-3xl font-bold text-brand tracking-tight leading-none">
               Shah Fashion
             </h1>
           </Link>
 
-          <div className="hidden md:block flex-1 mx-6">
+          <div className="hidden md:block flex-1 mx-8">
             <SearchBar />
           </div>
 
@@ -85,22 +101,6 @@ export function Header() {
             <SearchBar expanded onClose={() => setSearchOpen(false)} />
           </div>
         )}
-
-        {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-6 h-10 border-t border-gray-50 -mt-px">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              to={link.href}
-              className="text-sm font-medium text-gray-600 hover:text-brand transition-colors py-2"
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Link to="/shop/new-arrivals" className="text-sm font-medium text-brand hover:text-maroon transition-colors py-2">
-            New Arrivals
-          </Link>
-        </nav>
       </div>
 
       {/* Mobile menu drawer */}
