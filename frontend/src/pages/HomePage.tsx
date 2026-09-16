@@ -194,7 +194,7 @@ const defaultHeroSlides = [
     cta: 'Shop Wedding Sarees',
     href: '/shop/wedding',
     bg: 'from-maroon/90 to-maroon-dark/90',
-    image: '/hero/slide1.jpg',
+    image: '/hero-1536x1024.webp',
   },
   {
     title: 'Festive Sale — Up to 30% Off',

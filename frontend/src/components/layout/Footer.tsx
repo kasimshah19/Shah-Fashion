@@ -8,7 +8,7 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-3">
-              <img src="/favicon.png" alt="SF" className="w-10 h-10 rounded-xl" />
+              <img src="/shah-fashion-main-logo.svg" alt="SF" className="w-10 h-10 rounded-xl" />
               <h3 className="font-serif text-xl sm:text-2xl font-bold text-gold tracking-tight leading-none">
                 Shah Fashion
               </h3>
