@@ -6,6 +6,7 @@ import { formatPrice } from '../utils/format';
 import { EmptyState } from '../components/ui/EmptyState';
 import { supabase } from '../utils/supabase';
 import { useToast } from '../components/ui/Toast';
+import { AvailableCoupons } from '../components/cart/AvailableCoupons';
 
 const SHIPPING_THRESHOLD = 1999;
 const SHIPPING_COST = 99;
@@ -215,6 +216,7 @@ export function CartPage() {
                     className="input-field flex-1 uppercase"
                   />
                   <button 
+                    id="apply-coupon-btn"
                     onClick={handleApplyCoupon} 
                     disabled={!couponCode.trim() || applyingCoupon}
                     className="btn-secondary whitespace-nowrap"
@@ -222,6 +224,20 @@ export function CartPage() {
                     {applyingCoupon ? 'Applying...' : 'Apply'}
                   </button>
                 </div>
+              )}
+              
+              {!appliedCoupon && (
+                <AvailableCoupons 
+                  subtotal={subtotal} 
+                  onApply={(code) => {
+                    setCouponCode(code);
+                    // Provide a small delay for state update before applying
+                    setTimeout(() => {
+                      const btn = document.getElementById('apply-coupon-btn');
+                      if (btn) btn.click();
+                    }, 100);
+                  }} 
+                />
               )}
             </div>
 

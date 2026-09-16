@@ -2,17 +2,7 @@ import { useState, useEffect } from 'react';
 import { supabase } from '../../utils/supabase';
 import { Search, Plus, Edit, Trash2, Check, X } from 'lucide-react';
 import { formatPrice } from '../../utils/format';
-
-type Coupon = {
-  id: string;
-  code: string;
-  discount_type: 'percent' | 'flat';
-  discount_value: number;
-  min_order_value: number;
-  valid_from: string;
-  valid_to: string;
-  active: boolean;
-};
+import { Coupon } from '../../types';
 
 export function AdminCouponsPage() {
   const [coupons, setCoupons] = useState<Coupon[]>([]);

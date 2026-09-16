@@ -119,3 +119,14 @@ export interface ProductFilters {
   search?: string;
   sort?: 'price-asc' | 'price-desc' | 'newest' | 'popularity' | 'rating';
 }
+
+export type Coupon = {
+  id: string;
+  code: string;
+  discount_type: 'percent' | 'flat';
+  discount_value: number;
+  min_order_value: number;
+  valid_from: string;
+  valid_to: string;
+  active: boolean;
+};
