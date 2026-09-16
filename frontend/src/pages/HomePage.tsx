@@ -194,7 +194,7 @@ const defaultHeroSlides = [
     cta: 'Shop Wedding Sarees',
     href: '/shop/wedding',
     bg: 'from-maroon/90 to-maroon-dark/90',
-    image: '/hero-1536x1024.webp',
+    image: '/hero/saree_hero_1.jpg',
   },
   {
     title: 'Festive Sale — Up to 30% Off',
@@ -202,7 +202,7 @@ const defaultHeroSlides = [
     cta: 'Shop Sale',
     href: '/shop/sale',
     bg: 'from-bottle/90 to-bottle-light/90',
-    image: '/hero/slide2.jpg',
+    image: '/hero/saree_hero_2.jpg',
   },
   {
     title: 'Heritage Banarasi',
@@ -210,7 +210,7 @@ const defaultHeroSlides = [
     cta: 'Explore Banarasi',
     href: '/shop/banarasi',
     bg: 'from-amber-800/90 to-amber-900/90',
-    image: '/hero/slide3.jpg',
+    image: '/hero/saree_hero_3.jpg',
   },
   {
     title: 'The Royal Drape',
@@ -218,7 +218,7 @@ const defaultHeroSlides = [
     cta: 'Shop Silks',
     href: '/shop/silk',
     bg: 'from-indigo-900/90 to-purple-900/90',
-    image: '/about-story/story_3.jpg',
+    image: '/hero/saree_hero_4.jpg',
   },
   {
     title: 'Artisan Crafted',
@@ -226,7 +226,7 @@ const defaultHeroSlides = [
     cta: 'Our Story',
     href: '/about',
     bg: 'from-rose-900/90 to-rose-950/90',
-    image: '/about-hero/saree_pallu_detail_1789360151408.jpg',
+    image: '/hero/saree_hero_5.jpg',
   },
   {
     title: 'Bridal Exclusives',
@@ -234,7 +234,7 @@ const defaultHeroSlides = [
     cta: 'Shop Bridal',
     href: '/shop/bridal',
     bg: 'from-red-900/90 to-maroon/90',
-    image: '/about-story/story_1_v2.jpg',
+    image: '/hero-1536x1024.webp',
   },
 ];
 
