@@ -7,6 +7,7 @@ import { formatPrice } from '../utils/format';
 import { initiatePayment } from '../utils/payment';
 import type { Address, PaymentMethod, OrderItem } from '../types';
 import { supabase } from '../utils/supabase';
+import { useToast, Toast } from '../components/ui/Toast';
 
 const STEPS = ['Address', 'Delivery', 'Payment', 'Review'];
 const SHIPPING_COST = 99;
@@ -46,6 +47,18 @@ export function CheckoutPage() {
     city: '',
     state: '',
   });
+  const { toastMessage, showToast, hideToast } = useToast();
+
+  const handleAddressSubmit = () => {
+    if (selectedAddress === 'new' || !user?.addresses.length) {
+      if (!newAddress.name.trim() || !newAddress.phone.trim() || !newAddress.pincode.trim() || 
+          !newAddress.city.trim() || !newAddress.state.trim() || !newAddress.addressLine1.trim()) {
+        showToast('Please fill all required address details');
+        return;
+      }
+    }
+    setStep(1);
+  };
 
   useEffect(() => {
     async function loadProducts() {
@@ -131,6 +144,7 @@ export function CheckoutPage() {
 
   return (
     <div className="page-container py-6 pb-24 lg:pb-8 animate-fade-in">
+      {toastMessage && <Toast message={toastMessage} onClose={hideToast} />}
       <h1 className="font-serif text-2xl sm:text-3xl font-semibold text-maroon mb-6">Checkout</h1>
 
       {/* Step indicator */}
@@ -188,7 +202,7 @@ export function CheckoutPage() {
                   <input placeholder="Address Line 2 (optional)" value={newAddress.addressLine2} onChange={(e) => setNewAddress({ ...newAddress, addressLine2: e.target.value })} className="input-field text-sm sm:col-span-2" />
                 </div>
               )}
-              <button onClick={() => setStep(1)} className="btn-primary mt-6">Continue to Delivery</button>
+              <button onClick={handleAddressSubmit} className="btn-primary mt-6">Continue to Delivery</button>
             </div>
           )}
 
