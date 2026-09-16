@@ -16,7 +16,7 @@ const SHIPPING_THRESHOLD = 1999;
 const DELIVERY_SLOTS = [
   'Standard (3-5 days)',
   'Express (1-2 days) — ₹149',
-  'Scheduled Delivery',
+  'Scheduled Delivery — ₹99',
 ];
 
 const PAYMENT_METHODS: { id: PaymentMethod; label: string; desc: string }[] = [
@@ -35,6 +35,7 @@ export function CheckoutPage() {
   const [step, setStep] = useState(0);
   const [selectedAddress, setSelectedAddress] = useState<string | 'new'>('new');
   const [deliverySlot, setDeliverySlot] = useState(DELIVERY_SLOTS[0]);
+  const [scheduledDate, setScheduledDate] = useState('');
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('UPI');
   const [placing, setPlacing] = useState(false);
   const [newAddress, setNewAddress] = useState<Address>({
@@ -83,8 +84,10 @@ export function CheckoutPage() {
 
   const { mrpTotal, subtotal, discount, couponDiscount, total } = getCartTotal(products);
   const shipping = subtotal >= SHIPPING_THRESHOLD ? 0 : SHIPPING_COST;
-  const expressExtra = deliverySlot.includes('Express') ? 149 : 0;
-  const grandTotal = total + shipping + expressExtra;
+  let deliveryExtra = 0;
+  if (deliverySlot.includes('Express')) deliveryExtra = 149;
+  else if (deliverySlot.includes('Scheduled')) deliveryExtra = 99;
+  const grandTotal = total + shipping + deliveryExtra;
 
   if (activeItems.length === 0) {
     return (
@@ -126,11 +129,11 @@ export function CheckoutPage() {
       }).filter(Boolean) as OrderItem[],
       address,
       paymentMethod,
-      deliverySlot,
+      deliverySlot: deliverySlot.includes('Scheduled') ? `${deliverySlot} (Date: ${scheduledDate})` : deliverySlot,
       subtotal,
       discount,
       couponDiscount,
-      shipping: shipping + expressExtra,
+      shipping: shipping + deliveryExtra,
       total: grandTotal,
       status: 'Placed' as const,
       createdAt: new Date().toISOString(),
@@ -210,15 +213,29 @@ export function CheckoutPage() {
               <h2 className="font-medium text-lg mb-4">Delivery Option</h2>
               <div className="space-y-2">
                 {DELIVERY_SLOTS.map((slot) => (
-                  <label key={slot} className={`flex items-center gap-2 p-3 border rounded-lg cursor-pointer ${deliverySlot === slot ? 'border-maroon bg-maroon/5' : 'border-gray-200'}`}>
-                    <input type="radio" name="delivery" checked={deliverySlot === slot} onChange={() => setDeliverySlot(slot)} className="accent-maroon shrink-0" />
-                    <span className="text-sm min-w-0">{slot}</span>
-                  </label>
+                  <div key={slot} className={`border rounded-lg ${deliverySlot === slot ? 'border-maroon bg-maroon/5' : 'border-gray-200'}`}>
+                    <label className="flex items-center gap-2 p-3 cursor-pointer">
+                      <input type="radio" name="delivery" checked={deliverySlot === slot} onChange={() => setDeliverySlot(slot)} className="accent-maroon shrink-0" />
+                      <span className="text-sm min-w-0">{slot}</span>
+                    </label>
+                    {deliverySlot === slot && slot.includes('Scheduled') && (
+                      <div className="px-3 pb-3 pt-1 border-t border-maroon/10 animate-fade-in">
+                        <label className="text-xs text-gray-600 block mb-1">Select Delivery Date</label>
+                        <input type="date" min={new Date(Date.now() + 86400000).toISOString().split('T')[0]} value={scheduledDate} onChange={(e) => setScheduledDate(e.target.value)} className="input-field text-sm bg-white" />
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
               <div className="flex gap-3 mt-6">
                 <button onClick={() => setStep(0)} className="btn-secondary">Back</button>
-                <button onClick={() => setStep(2)} className="btn-primary">Continue to Payment</button>
+                <button onClick={() => {
+                  if (deliverySlot.includes('Scheduled') && !scheduledDate) {
+                    showToast('Please select a delivery date to continue.');
+                    return;
+                  }
+                  setStep(2);
+                }} className="btn-primary">Continue to Payment</button>
               </div>
             </div>
           )}
@@ -267,7 +284,7 @@ export function CheckoutPage() {
               </div>
               <div className="text-sm space-y-1 border-t border-gray-100 pt-3">
                 <p className="break-words"><strong>Deliver to:</strong> {getAddress().name}, {getAddress().addressLine1}, {getAddress().city} — {getAddress().pincode}</p>
-                <p><strong>Delivery:</strong> {deliverySlot}</p>
+                <p><strong>Delivery:</strong> {deliverySlot.includes('Scheduled') ? `${deliverySlot} (Date: ${scheduledDate})` : deliverySlot}</p>
                 <p><strong>Payment:</strong> {paymentMethod}</p>
               </div>
               <div className="flex gap-3 mt-6">
@@ -289,7 +306,7 @@ export function CheckoutPage() {
             <div className="flex justify-between font-medium pt-2 border-t border-gray-100 mt-2"><span className="text-gray-700">Subtotal</span><span>{formatPrice(subtotal)}</span></div>
             {couponDiscount > 0 && <div className="flex justify-between text-green-600"><span>Coupon Discount</span><span>-{formatPrice(couponDiscount)}</span></div>}
             <div className="flex justify-between"><span className="text-gray-500">Shipping</span><span>{shipping === 0 ? 'FREE' : formatPrice(shipping)}</span></div>
-            {expressExtra > 0 && <div className="flex justify-between"><span className="text-gray-500">Express</span><span>{formatPrice(expressExtra)}</span></div>}
+            {deliveryExtra > 0 && <div className="flex justify-between"><span className="text-gray-500">{deliverySlot.includes('Express') ? 'Express' : 'Scheduled'}</span><span>{formatPrice(deliveryExtra)}</span></div>}
             <div className="border-t pt-2 flex justify-between font-semibold"><span>Total</span><span className="text-maroon">{formatPrice(grandTotal)}</span></div>
           </div>
         </div>
