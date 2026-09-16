@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Heart, ShoppingBag, User, Search, Menu, X } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
@@ -13,8 +13,10 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const navLinks = [
+    { label: 'Home', href: '/' },
     { label: 'Silk Sarees', href: '/shop/silk-sarees' },
     { label: 'Cotton Sarees', href: '/shop/cotton-sarees' },
     { label: 'Wedding', href: '/shop/wedding' },
@@ -27,16 +29,26 @@ export function Header() {
       <div className="page-container">
         {/* Desktop nav (Top row) */}
         <nav className="hidden lg:flex items-center justify-center gap-8 h-10 text-xs">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              to={link.href}
-              className="font-medium text-gray-600 hover:text-brand transition-colors py-2"
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Link to="/shop/new-arrivals" className="font-medium text-brand hover:text-maroon transition-colors py-2">
+          {navLinks.map((link) => {
+            const isActive = location.pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                to={link.href}
+                className={`font-medium transition-colors py-2 ${
+                  isActive ? 'text-brand' : 'text-gray-600 hover:text-brand'
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+          <Link 
+            to="/shop/new-arrivals" 
+            className={`font-medium transition-colors py-2 ${
+              location.pathname === '/shop/new-arrivals' ? 'text-brand' : 'text-brand hover:text-maroon'
+            }`}
+          >
             New Arrivals
           </Link>
         </nav>
@@ -107,20 +119,27 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-gray-100 bg-white animate-fade-in">
           <nav className="page-container py-4 space-y-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="block py-3 font-medium text-gray-700 hover:text-brand min-h-[44px]"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = location.pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`block py-3 font-medium min-h-[44px] ${
+                    isActive ? 'text-brand' : 'text-gray-700 hover:text-brand'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
             <Link
               to="/shop/new-arrivals"
               onClick={() => setMobileMenuOpen(false)}
-              className="block py-3 font-medium text-brand min-h-[44px]"
+              className={`block py-3 font-medium min-h-[44px] ${
+                location.pathname === '/shop/new-arrivals' ? 'text-maroon' : 'text-brand'
+              }`}
             >
               New Arrivals
             </Link>
