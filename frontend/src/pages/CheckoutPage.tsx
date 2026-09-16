@@ -272,8 +272,9 @@ export function CheckoutPage() {
         <div className="card p-4 sm:p-6 h-fit sticky top-24">
           <h2 className="font-serif text-lg font-semibold mb-4">Summary</h2>
           <div className="space-y-2 text-sm">
-            <div className="flex justify-between"><span className="text-gray-500">Subtotal</span><span>{formatPrice(mrpTotal)}</span></div>
-            {discount > 0 && <div className="flex justify-between text-green-600"><span>Discount</span><span>-{formatPrice(discount)}</span></div>}
+            <div className="flex justify-between"><span className="text-gray-500">Total MRP</span><span>{formatPrice(mrpTotal)}</span></div>
+            {discount > 0 && <div className="flex justify-between text-green-600"><span>Discount on MRP</span><span>-{formatPrice(discount)}</span></div>}
+            <div className="flex justify-between font-medium pt-2 border-t border-gray-100 mt-2"><span className="text-gray-700">Subtotal</span><span>{formatPrice(subtotal)}</span></div>
             {couponDiscount > 0 && <div className="flex justify-between text-green-600"><span>Coupon Discount</span><span>-{formatPrice(couponDiscount)}</span></div>}
             <div className="flex justify-between"><span className="text-gray-500">Shipping</span><span>{shipping === 0 ? 'FREE' : formatPrice(shipping)}</span></div>
             {expressExtra > 0 && <div className="flex justify-between"><span className="text-gray-500">Express</span><span>{formatPrice(expressExtra)}</span></div>}

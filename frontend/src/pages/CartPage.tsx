@@ -163,15 +163,19 @@ export function CartPage() {
             <h2 className="font-serif text-lg font-semibold mb-4">Order Summary</h2>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span className="text-gray-500">Subtotal</span>
+                <span className="text-gray-500">Total MRP</span>
                 <span>{formatPrice(mrpTotal)}</span>
               </div>
               {discount > 0 && (
                 <div className="flex justify-between text-green-600">
-                  <span>Discount</span>
+                  <span>Discount on MRP</span>
                   <span>-{formatPrice(discount)}</span>
                 </div>
               )}
+              <div className="flex justify-between font-medium pt-2 border-t border-gray-100 mt-2">
+                <span className="text-gray-700">Subtotal</span>
+                <span>{formatPrice(subtotal)}</span>
+              </div>
               {couponDiscount > 0 && (
                 <div className="flex justify-between text-green-600">
                   <span>Coupon Discount</span>
