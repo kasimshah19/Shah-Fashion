@@ -37,8 +37,23 @@ export function UpdatePrompt() {
     }
   }, [needRefresh]);
 
-  const handleUpdate = () => {
-    updateServiceWorker(true);
+  const handleUpdate = async () => {
+    // Hide the prompt immediately to give user feedback
+    setIsOpen(false);
+    
+    try {
+      // Tell the new SW to take over and reload the page
+      await updateServiceWorker(true);
+      
+      // Fallback: if the page hasn't reloaded after a short delay, force it
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
+    } catch (error) {
+      console.error('Failed to update service worker:', error);
+      // Fallback on error
+      window.location.reload();
+    }
   };
 
   const handleClose = () => {
