@@ -6,19 +6,26 @@ import { RefreshCw, X } from 'lucide-react';
 export function UpdatePrompt() {
   const [isOpen, setIsOpen] = useState(false);
   const {
-    needRefresh: [needRefresh, setNeedRefresh],
+    needRefresh: [needRefresh],
     updateServiceWorker,
   } = useRegisterSW({
-    onRegistered(r) {
+    onRegistered(r: ServiceWorkerRegistration | undefined) {
       // Setup periodic update checks (every 60 minutes)
       // This is crucial for PWA users who keep the app open for days
       if (r) {
         setInterval(() => {
           r.update();
         }, 60 * 60 * 1000); // 1 hour
+
+        // Also check for updates when the app comes back into foreground
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible') {
+            r.update();
+          }
+        });
       }
     },
-    onRegisterError(error) {
+    onRegisterError(error: Error | any) {
       console.error('SW registration error', error);
     },
   });
