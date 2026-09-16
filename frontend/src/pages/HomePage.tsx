@@ -109,7 +109,7 @@ export function HomePage() {
     <div className="animate-fade-in">
       {/* Hero Carousel */}
       <section 
-        className="relative overflow-hidden bg-ivory-dark w-full min-h-[350px] sm:min-h-[450px] md:min-h-[70vh] lg:min-h-[80vh]"
+        className="relative overflow-hidden bg-ivory-dark w-full h-[clamp(450px,50vw,700px)] min-h-[450px]"
       >
         {heroSlides.map((slide, idx) => (
           <div
@@ -119,7 +119,7 @@ export function HomePage() {
             <img 
               src={slide.image} 
               alt="" 
-              className="absolute inset-0 w-full h-full object-cover" 
+              className="absolute inset-0 w-full h-full object-cover object-[center_15%]" 
               loading={idx === 0 ? "eager" : "lazy"}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#4a0d20]/70 via-[#4a0d20]/40 to-transparent" />

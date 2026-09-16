@@ -119,7 +119,7 @@ function HeroCarousel() {
           <img 
             src={img} 
             alt="Saree Texture" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-[center_15%]"
             loading={index === 0 ? "eager" : "lazy"}
           />
         </div>
@@ -187,7 +187,7 @@ function FounderQuoteSection() {
 export function AboutPage() {
   return (
     <div className="bg-ivory min-h-screen">
-      <section className="relative px-4 sm:px-6 lg:px-8 overflow-hidden group min-h-[450px] sm:min-h-[600px] md:min-h-[70vh] lg:min-h-[80vh] flex flex-col justify-center py-20">
+      <section className="relative px-4 sm:px-6 lg:px-8 overflow-hidden group h-[clamp(450px,55vw,750px)] min-h-[450px] flex flex-col justify-center py-20">
         <HeroCarousel />
         
         <AnimatedSection isHero className="max-w-4xl mx-auto text-center relative z-10 mt-10">
